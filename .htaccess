@@ -1,0 +1,56 @@
+# Allow social media crawlers to access the site
+# Fix for 403 errors on Facebook/WhatsApp sharing
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Allow Facebook crawler
+    RewriteCond %{HTTP_USER_AGENT} facebookexternalhit [NC,OR]
+    RewriteCond %{HTTP_USER_AGENT} Facebot [NC,OR]
+    RewriteCond %{HTTP_USER_AGENT} WhatsApp [NC,OR]
+    RewriteCond %{HTTP_USER_AGENT} Twitterbot [NC,OR]
+    RewriteCond %{HTTP_USER_AGENT} LinkedInBot [NC]
+    RewriteRule .* - [L]
+</IfModule>
+
+# Allow access to images for all crawlers
+<FilesMatch "\.(jpg|jpeg|png|gif|webp|svg|ico)$">
+    <IfModule mod_headers.c>
+        Header set Access-Control-Allow-Origin "*"
+    </IfModule>
+    Allow from all
+</FilesMatch>
+
+# Disable hotlink protection for social media crawlers
+<IfModule mod_rewrite.c>
+    RewriteCond %{HTTP_USER_AGENT} facebookexternalhit [NC,OR]
+    RewriteCond %{HTTP_USER_AGENT} Facebot [NC,OR]
+    RewriteCond %{HTTP_USER_AGENT} WhatsApp [NC,OR]
+    RewriteCond %{HTTP_USER_AGENT} Twitterbot [NC,OR]
+    RewriteCond %{HTTP_USER_AGENT} LinkedInBot [NC,OR]
+    RewriteCond %{HTTP_USER_AGENT} Googlebot [NC]
+    RewriteCond %{HTTP_REFERER} !^$
+    RewriteRule \.(jpg|jpeg|png|gif|webp)$ - [L]
+</IfModule>
+
+# Enable CORS for Open Graph images
+<IfModule mod_headers.c>
+    <FilesMatch "\.(jpg|jpeg|png|gif|webp)$">
+        Header set Access-Control-Allow-Origin "*"
+    </FilesMatch>
+</IfModule>
+
+# Compression for faster loading
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json
+</IfModule>
+
+# Browser caching
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+</IfModule>

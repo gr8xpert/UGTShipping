@@ -1,0 +1,27 @@
+# robots.txt for ugtshipping.com
+
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+# Explicitly allow social media crawlers
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Facebot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+# Sitemap location
+Sitemap: https://ugtshipping.com/sitemap.xml
