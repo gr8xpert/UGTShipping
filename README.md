@@ -41,14 +41,14 @@ ugtshipping/
 ├── .htaccess           # Apache server configuration
 ├── README.md           # Project documentation
 └── images/
-    ├── hero-bg.jpg     # Hero section background
-    ├── ugtshipping.png # Company logo
-    ├── about-ship.jpeg # About section image
-    ├── why-us-ship.jpeg# Why us section image
-    ├── port-salalah.jpeg
-    ├── port-duqm.jpeg
-    ├── port-muscat.jpeg
-    └── port-sohar.jpeg
+    ├── hero-bg.webp     # Hero section background
+    ├── ugtshipping.webp # Company logo
+    ├── about-ship.webp  # About section image
+    ├── why-us-ship.webp # Why us section image
+    ├── port-salalah.webp
+    ├── port-duqm.webp
+    ├── port-muscat.webp
+    └── port-sohar.webp
 ```
 
 ## Contact
